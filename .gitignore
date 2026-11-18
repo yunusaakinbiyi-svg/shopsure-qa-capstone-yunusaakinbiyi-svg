@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Playwright output
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Secrets and OS files
+.env
+.DS_Store
+Thumbs.db
+
+# NOTE: reports/newman/ is NOT ignored on purpose - the Newman report must be committed.
