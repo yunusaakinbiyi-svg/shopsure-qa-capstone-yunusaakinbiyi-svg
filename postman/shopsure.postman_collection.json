@@ -1,0 +1,833 @@
+{
+  "info": {
+    "_postman_id": "d23938a1-c537-461b-a057-b8aa6fb50318",
+    "name": "ShopSure API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58279516",
+    "_collection_link": "https://go.postman.co/collection/58279516-d23938a1-c537-461b-a057-b8aa6fb50318?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "ProductsList (positive)",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP status is 200', () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/productsList",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "productsList"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ProductsList (negative)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP status is 200', () => pm.response.to.have.status(200));\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/productsList",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "productsList"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Brands",
+      "item": [
+        {
+          "name": "brandsList (positive)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/brandsList",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "brandsList"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "brandsList (negative)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/brandsList",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "brandsList"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "item": [
+        {
+          "name": "search (positive)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP status is 200', () => pm.response.to.have.status(200));\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "search_product",
+                  "value": "{{searchTerm}}"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/searchProduct",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "searchProduct"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "search (negative)",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\n\r\n\r\n\r\n"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP status is 200', () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/searchProduct",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "searchProduct"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Account Lifecycle",
+      "item": [
+        {
+          "name": "createAccount (positive)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "name",
+                  "value": "{{userName}}"
+                },
+                {
+                  "key": "email",
+                  "value": "{{userEmail3}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{userPassword}}"
+                },
+                {
+                  "key": "title",
+                  "value": "{{userTitle}}"
+                },
+                {
+                  "key": "birth_date",
+                  "value": "{{userBirthDate}}"
+                },
+                {
+                  "key": "birth_month",
+                  "value": "{{userBirthMonth}}"
+                },
+                {
+                  "key": "birth_year",
+                  "value": "{{userBirthYear}}"
+                },
+                {
+                  "key": "firstname",
+                  "value": "{{userFirstName}}"
+                },
+                {
+                  "key": "lastname",
+                  "value": "{{userLastName}}"
+                },
+                {
+                  "key": "company",
+                  "value": "{{userCompany}}"
+                },
+                {
+                  "key": "address1",
+                  "value": "{{userAddress1}}"
+                },
+                {
+                  "key": "address2",
+                  "value": "{{userAddress2}}"
+                },
+                {
+                  "key": "country",
+                  "value": "{{userCountry}}"
+                },
+                {
+                  "key": "zipcode",
+                  "value": "{{userZipcode}}"
+                },
+                {
+                  "key": "state",
+                  "value": "{{userState}}"
+                },
+                {
+                  "key": "city",
+                  "value": "{{userCity}}"
+                },
+                {
+                  "key": "mobile_number",
+                  "value": "{{userMobile}}"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/createAccount",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "createAccount"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "createAccount (negative)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "name",
+                  "value": "{{userName}}"
+                },
+                {
+                  "key": "email",
+                  "value": "{{userEmail3}}"
+                },
+                {
+                  "key": "title",
+                  "value": "{{userTitle}}"
+                },
+                {
+                  "key": "birth_date",
+                  "value": "{{userBirthDate}}"
+                },
+                {
+                  "key": "birth_month",
+                  "value": "{{userBirthMonth}}"
+                },
+                {
+                  "key": "birth_year",
+                  "value": "{{userBirthYear}}"
+                },
+                {
+                  "key": "firstname",
+                  "value": "{{userFirstName}}"
+                },
+                {
+                  "key": "lastname",
+                  "value": "{{userLastName}}"
+                },
+                {
+                  "key": "company",
+                  "value": "{{userCompany}}"
+                },
+                {
+                  "key": "address1",
+                  "value": "{{userAddress1}}"
+                },
+                {
+                  "key": "address2",
+                  "value": "{{userAddress2}}"
+                },
+                {
+                  "key": "country",
+                  "value": "{{userCountry}}"
+                },
+                {
+                  "key": "zipcode",
+                  "value": "{{userZipcode}}"
+                },
+                {
+                  "key": "state",
+                  "value": "{{userState}}"
+                },
+                {
+                  "key": "city",
+                  "value": "{{userCity}}"
+                },
+                {
+                  "key": "mobile_number",
+                  "value": "{{userMobile}}"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/createAccount",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "createAccount"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "verifyLogin (positive)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "email",
+                  "value": "{{userEmail3}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{userPassword}}"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/verifyLogin",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "verifyLogin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "verifyLogin (negative)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "email",
+                  "value": "{{invalidEmail}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{wrongPassword}}"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/verifyLogin",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "verifyLogin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getUserDetailByEmail (positive)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/getUserDetailByEmail?email={{userEmail3}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "getUserDetailByEmail"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "{{userEmail3}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getUserDetailByEmail (negative)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/getUserDetailByEmail?email={{unknownEmail}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "getUserDetailByEmail"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "{{unknownEmail}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateAccount (positive)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP status is 200', () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "name",
+                  "value": "{{userName2}}"
+                },
+                {
+                  "key": "email",
+                  "value": "{{userEmail3}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{userPassword}}"
+                },
+                {
+                  "key": "title",
+                  "value": "{{userTitle}}"
+                },
+                {
+                  "key": "birth_date",
+                  "value": "{{userBirthDate}}"
+                },
+                {
+                  "key": "birth_month",
+                  "value": "{{userBirthMonth}}"
+                },
+                {
+                  "key": "birth_year",
+                  "value": "{{userBirthYear}}"
+                },
+                {
+                  "key": "firstname",
+                  "value": "{{userFirstName}}"
+                },
+                {
+                  "key": "lastname",
+                  "value": "{{userLastName}}"
+                },
+                {
+                  "key": "company",
+                  "value": "{{userCompany}}"
+                },
+                {
+                  "key": "address1",
+                  "value": "{{userAddress1}}"
+                },
+                {
+                  "key": "address2",
+                  "value": "{{userAddress2}}"
+                },
+                {
+                  "key": "country",
+                  "value": "{{userCountry}}"
+                },
+                {
+                  "key": "zipcode",
+                  "value": "{{userZipcode}}"
+                },
+                {
+                  "key": "state",
+                  "value": "{{userState}}"
+                },
+                {
+                  "key": "city",
+                  "value": "{{userCity2}}"
+                },
+                {
+                  "key": "mobile_number",
+                  "value": "{{userMobile}}"
+                },
+                {
+                  "key": "",
+                  "value": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/updateAccount",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "updateAccount"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateAccount (negative)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "name",
+                  "value": "{{userName2}}"
+                },
+                {
+                  "key": "email",
+                  "value": "{{userEmail3}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{wrongPassword2}}"
+                },
+                {
+                  "key": "title",
+                  "value": "{{userTitle}}"
+                },
+                {
+                  "key": "birth_date",
+                  "value": "{{userBirthDate}}"
+                },
+                {
+                  "key": "birth_month",
+                  "value": "{{userBirthMonth}}"
+                },
+                {
+                  "key": "birth_year",
+                  "value": "{{userBirthYear}}"
+                },
+                {
+                  "key": "firstname",
+                  "value": "{{userFirstName}}"
+                },
+                {
+                  "key": "lastname",
+                  "value": "{{userLastName}}"
+                },
+                {
+                  "key": "company",
+                  "value": "{{userCompany}}"
+                },
+                {
+                  "key": "address1",
+                  "value": "{{userAddress1}}"
+                },
+                {
+                  "key": "address2",
+                  "value": "{{userAddress2}}"
+                },
+                {
+                  "key": "country",
+                  "value": "{{userCountry}}"
+                },
+                {
+                  "key": "zipcode",
+                  "value": "{{userZipcode}}"
+                },
+                {
+                  "key": "state",
+                  "value": "{{userState}}"
+                },
+                {
+                  "key": "city",
+                  "value": "{{userCity2}}"
+                },
+                {
+                  "key": "mobile_number",
+                  "value": "{{userMobile}}"
+                },
+                {
+                  "key": "",
+                  "value": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/updateAccount",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "updateAccount"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteAccount (positive)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "email",
+                  "value": "{{userEmail2}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{userPassword}}"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/deleteAccount",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "deleteAccount"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteAccount (negative)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "email",
+                  "value": "{{userEmail2}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{userPassword}}"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/deleteAccount?password={{wrongPassword}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "deleteAccount"
+              ],
+              "query": [
+                {
+                  "key": "password",
+                  "value": "{{wrongPassword}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
