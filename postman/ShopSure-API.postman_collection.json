@@ -14,20 +14,11 @@
           "name": "ProductsList (positive)",
           "event": [
             {
-              "listen": "prerequest",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            },
-            {
               "listen": "test",
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test('HTTP status is 200', () => pm.response.to.have.status(200));"
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"products list is not empty\", function () {\r\n    pm.expect(pm.response.json().products).to.be.an(\"array\").that.is.not.empty;\r\n});\r\n\r\npm.test(\"Content-Type header is present and is text/html\", function () {\r\n    pm.response.to.have.header(\"Content-Type\");\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r\n});"
                 ]
               }
             }
@@ -56,7 +47,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test('HTTP status is 200', () => pm.response.to.have.status(200));\r\n"
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"responseCode is 405 when POST is sent to productsList\", function () {\r\n    pm.expect(pm.response.json().responseCode).to.eql(405);\r\n});\r\n\r\npm.test(\"message says the request method is not supported\", function () {\r\n    pm.expect(pm.response.json().message).to.eql(\"This request method is not supported.\");\r\n});\r\n\r\npm.test(\"Content-Type header is present and is text/html\", function () {\r\n    pm.response.to.have.header(\"Content-Type\");\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r\n});\r\n"
                 ]
               }
             }
@@ -90,7 +81,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"brands list is not empty\", function () {\r\n    pm.expect(pm.response.json().brands).to.be.an(\"array\").that.is.not.empty;\r\n});\r\n\r\npm.test(\"Content-Type header is present and is text/html\", function () {\r\n    pm.response.to.have.header(\"Content-Type\");\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r\n});"
                 ]
               }
             }
@@ -119,7 +110,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"responseCode is 405 when PUT is sent to brandsList\", function () {\r\n    pm.expect(pm.response.json().responseCode).to.eql(405);\r\n});\r\n\r\npm.test(\"message says the request method is not supported\", function () {\r\n    pm.expect(pm.response.json().message).to.eql(\"This request method is not supported.\");\r\n});\r\n\r\npm.test(\"Content-Type header is present and is text/html\", function () {\r\n    pm.response.to.have.header(\"Content-Type\");\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r\n});"
                 ]
               }
             }
@@ -153,7 +144,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test('HTTP status is 200', () => pm.response.to.have.status(200));\r\n"
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"responseCode is 200 when present in the body\", function () {\r\n    const body = pm.response.json();\r\n    if (body.responseCode !== undefined) {\r\n        pm.expect(body.responseCode).to.eql(200);\r\n    }\r\n});\r\n\r\npm.test(\"search results for 'top' are not empty and each relates to 'top'\", function () {\r\n    const products = pm.response.json().products;\r\n    pm.expect(products).to.be.an(\"array\").that.is.not.empty;\r\n    products.forEach(function (p) {\r\n        pm.expect(JSON.stringify(p).toLowerCase()).to.include(\"top\");\r\n    });\r\n});\r\n\r\npm.test(\"Content-Type header is present and is text/html\", function () {\r\n    pm.response.to.have.header(\"Content-Type\");\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r\n});"
                 ]
               }
             }
@@ -200,7 +191,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test('HTTP status is 200', () => pm.response.to.have.status(200));"
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"responseCode is 400 when search_product is missing\", function () {\r\n    pm.expect(pm.response.json().responseCode).to.eql(400);\r\n});\r\n\r\npm.test(\"message says search_product is missing\", function () {\r\n    pm.expect(pm.response.json().message).to.include(\"search_product parameter is missing\");\r\n});\r\n\r\npm.test(\"Content-Type header is present and is text/html\", function () {\r\n    pm.response.to.have.header(\"Content-Type\");\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r\n});"
                 ]
               }
             }
@@ -228,6 +219,17 @@
       "item": [
         {
           "name": "createAccount (positive)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"responseCode is 201 when the account is created\", function () {\r\n    pm.expect(pm.response.json().responseCode).to.eql(201);\r\n});\r\n\r\npm.test(\"message is User created!\", function () {\r\n    pm.expect(pm.response.json().message).to.eql(\"User created!\");\r\n});\r\n\r\npm.test(\"Content-Type header is present and is text/html\", function () {\r\n    pm.response.to.have.header(\"Content-Type\");\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r\n});"
+                ]
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
@@ -240,7 +242,7 @@
                 },
                 {
                   "key": "email",
-                  "value": "{{userEmail3}}"
+                  "value": "{{userEmail4}}"
                 },
                 {
                   "key": "password",
@@ -319,6 +321,17 @@
         },
         {
           "name": "createAccount (negative)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"responseCode is 400 when a required field is missing\", function () {\r\n    pm.expect(pm.response.json().responseCode).to.eql(400);\r\n});\r\n\r\npm.test(\"message names the missing parameter\", function () {\r\n    pm.expect(pm.response.json().message).to.include(\"is missing in POST request\");\r\n});\r\n\r\npm.test(\"Content-Type header is present and is text/html\", function () {\r\n    pm.response.to.have.header(\"Content-Type\");\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r\n});"
+                ]
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
@@ -406,6 +419,17 @@
         },
         {
           "name": "verifyLogin (positive)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"responseCode is 200 for valid login details\", function () {\r\n    pm.expect(pm.response.json().responseCode).to.eql(200);\r\n});\r\n\r\npm.test(\"message is User exists!\", function () {\r\n    pm.expect(pm.response.json().message).to.eql(\"User exists!\");\r\n});\r\n\r\npm.test(\"Content-Type header is present and is text/html\", function () {\r\n    pm.response.to.have.header(\"Content-Type\");\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r\n});"
+                ]
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
@@ -437,6 +461,17 @@
         },
         {
           "name": "verifyLogin (negative)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"responseCode is 404 for invalid login details\", function () {\r\n    pm.expect(pm.response.json().responseCode).to.eql(404);\r\n});\r\n\r\npm.test(\"message is User not found!\", function () {\r\n    pm.expect(pm.response.json().message).to.eql(\"User not found!\");\r\n});\r\n"
+                ]
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
@@ -474,7 +509,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                  "pm.test(\"HTTP status is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"responseCode is 200 for an existing email\", function () {\n    pm.expect(pm.response.json().responseCode).to.eql(200);\n});\n\npm.test(\"returned user's email matches\", function () {\n    const jsonData = pm.response.json();\n    pm.expect(jsonData.user.email).to.eql(pm.environment.get(\"userEmail3\"));\n});\n\npm.test(\"Content-Type header is present and is text/html\", function () {\n    pm.response.to.have.header(\"Content-Type\");\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\n});"
                 ]
               }
             }
@@ -509,7 +544,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"responseCode is 404 for an unknown email\", function () {\r\n    pm.expect(pm.response.json().responseCode).to.eql(404);\r\n});\r\n\r\npm.test(\"message says the account was not found\", function () {\r\n    pm.expect(pm.response.json().message).to.include(\"Account not found\");\r\n});\r\n\r\npm.test(\"Content-Type header is present and is text/html\", function () {\r\n    pm.response.to.have.header(\"Content-Type\");\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r\n});"
                 ]
               }
             }
@@ -544,7 +579,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test('HTTP status is 200', () => pm.response.to.have.status(200));"
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"responseCode is 200 when the account is updated\", function () {\r\n    pm.expect(pm.response.json().responseCode).to.eql(200);\r\n});\r\n\r\npm.test(\"message is User updated!\", function () {\r\n    pm.expect(pm.response.json().message).to.eql(\"User updated!\");\r\n});\r\n\r\npm.test(\"Content-Type header is present and is text/html\", function () {\r\n    pm.response.to.have.header(\"Content-Type\");\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r\n});"
                 ]
               }
             }
@@ -644,6 +679,17 @@
         },
         {
           "name": "updateAccount (negative)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"responseCode is 404 when the password is wrong\", function () {\r\n    pm.expect(pm.response.json().responseCode).to.eql(404);\r\n});\r\n\r\npm.test(\"message says the account was not found\", function () {\r\n    pm.expect(pm.response.json().message).to.include(\"Account not found\");\r\n});\r\n\r\npm.test(\"Content-Type header is present and is text/html\", function () {\r\n    pm.response.to.have.header(\"Content-Type\");\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r\n});"
+                ]
+              }
+            }
+          ],
           "request": {
             "method": "PUT",
             "header": [],
@@ -745,7 +791,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"responseCode is 200 when the account is deleted\", function () {\r\n    pm.expect(pm.response.json().responseCode).to.eql(200);\r\n});\r\n\r\npm.test(\"message is Account deleted!\", function () {\r\n    pm.expect(pm.response.json().message).to.eql(\"Account deleted!\");\r\n});\r\n\r\npm.test(\"Content-Type header is present and is text/html\", function () {\r\n    pm.response.to.have.header(\"Content-Type\");\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r\n});"
                 ]
               }
             }
@@ -758,7 +804,7 @@
               "urlencoded": [
                 {
                   "key": "email",
-                  "value": "{{userEmail2}}"
+                  "value": "{{userEmail4}}"
                 },
                 {
                   "key": "password",
@@ -787,7 +833,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                  "pm.test(\"HTTP status is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"responseCode is 404 when the password is wrong\", function () {\r\n    pm.expect(pm.response.json().responseCode).to.eql(404);\r\n});\r\n\r\npm.test(\"message says the account was not found\", function () {\r\n    pm.expect(pm.response.json().message).to.include(\"Account not found\");\r\n});\r\n\r\npm.test(\"Content-Type header is present and is text/html\", function () {\r\n    pm.response.to.have.header(\"Content-Type\");\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r\n});"
                 ]
               }
             }
