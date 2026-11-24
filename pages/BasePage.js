@@ -4,7 +4,9 @@ export class BasePage {
   }
 
   async navigateTo(pagePath) {
-    await this.page.goto(pagePath);
+    // 'commit' returns once the server starts answering. The web-first assertions then wait
+    // for the elements, which is more reliable on a slow connection than waiting for the whole page.
+    await this.page.goto(pagePath, { waitUntil: 'commit' });
   }
 
   async blockAds() {
