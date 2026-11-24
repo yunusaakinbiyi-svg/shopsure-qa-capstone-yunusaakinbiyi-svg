@@ -6,8 +6,12 @@
   "directories": {
     "doc": "docs"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "report": "playwright show-report",
     "test:api": "newman run postman/ShopSure-API.postman_collection.json -e postman/shopsure.postman_environment.json -r cli,htmlextra --reporter-htmlextra-export reports/newman/shopsure-api-report.html"
   },
   "repository": {
@@ -23,6 +27,7 @@
   },
   "homepage": "https://github.com/yunusaakinbiyi-svg/shopsure-qa-capstone-yunusaakinbiyi-svg#readme",
   "devDependencies": {
+    "@playwright/test": "^1.65.1",
     "newman": "^6.2.3",
     "newman-reporter-htmlextra": "^1.23.1"
   }
