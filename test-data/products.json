@@ -1,5 +1,5 @@
 {
-    "searchTerm": "blue",
+  "searchTerm": "blue",
   "detailProduct": {
     "name": "Blue Top",
     "category": "Women > Tops",
@@ -9,7 +9,7 @@
     "brand": "Polo"
   },
   "cartProducts": [
-    { "name": "Blue Top", "price": "Rs. 500", "quantity": 1 },
-    { "name": "Men Tshirt", "price": "Rs. 400", "quantity": 3 }
+    { "id": 1, "name": "Blue Top", "price": "Rs. 500", "quantity": 1 },
+    { "id": 2, "name": "Men Tshirt", "price": "Rs. 400", "quantity": 3 }
   ]
 }
