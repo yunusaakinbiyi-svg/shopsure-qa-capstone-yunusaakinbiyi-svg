@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/yunusaakinbiyi-svg/shopsure-qa-capstone-yunusaakinbiyi-svg#readme",
   "devDependencies": {
+    "@playwright/test": "^1.65.1",
     "newman": "^6.2.3",
     "newman-reporter-htmlextra": "^1.23.1"
   }
