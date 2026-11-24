@@ -14,6 +14,23 @@ export class ProductDetailPage extends BasePage {
     this.availabilityText = this.productInformation.locator('p', { hasText: 'Availability:' });
     this.conditionText = this.productInformation.locator('p', { hasText: 'Condition:' });
     this.brandText = this.productInformation.locator('p', { hasText: 'Brand:' });
+
+    this.quantityInput = this.productInformation.getByRole('spinbutton');
+    this.addToCartButton = this.productInformation.getByRole('button', { name: 'Add to cart' });
+    this.addedToCartConfirmation = page.getByText('Your product has been added to cart.');
+  }
+
+  async open(productId) {
+    await this.blockAds();
+    await this.navigateTo(`/product_details/${productId}`);
+  }
+
+  async setQuantity(quantity) {
+    await this.quantityInput.fill(String(quantity));
+  }
+
+  async addToCart() {
+    await this.addToCartButton.click();
   }
 
   async verifyName(expectedName) {
@@ -38,5 +55,9 @@ export class ProductDetailPage extends BasePage {
 
   async verifyBrand(expectedBrand) {
     await expect(this.brandText).toContainText(expectedBrand);
+  }
+
+  async verifyAddedToCartConfirmation() {
+    await expect(this.addedToCartConfirmation).toBeVisible();
   }
 }
