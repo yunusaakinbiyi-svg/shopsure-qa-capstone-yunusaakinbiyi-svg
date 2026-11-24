@@ -15,7 +15,9 @@ export class HeaderComponent {
   async logout() {
     await this.logoutLink.click();
   }
-
+  async deleteAccount() {
+    await this.deleteAccountLink.click();
+  }
   async verifyLoggedInAs(userName) {
     await expect(this.loggedInUserLabel).toContainText(userName);
   }
