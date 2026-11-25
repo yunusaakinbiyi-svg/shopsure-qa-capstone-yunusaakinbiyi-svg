@@ -6,6 +6,7 @@ export class HeaderComponent {
     this.signupLoginLink = page.getByRole('link', { name: 'Signup / Login' });
     this.logoutLink = page.getByRole('link', { name: 'Logout' });
     this.loggedInUserLabel = page.getByText('Logged in as');
+    this.deleteAccountLink = page.getByRole('link', { name: 'Delete Account' });
   }
 
   async openSignupLoginPage() {
