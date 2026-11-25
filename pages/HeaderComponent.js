@@ -6,6 +6,7 @@ export class HeaderComponent {
     this.signupLoginLink = page.getByRole('link', { name: 'Signup / Login' });
     this.logoutLink = page.getByRole('link', { name: 'Logout' });
     this.loggedInUserLabel = page.getByText('Logged in as');
+    this.deleteAccountLink = page.getByRole('link', { name: 'Delete Account' });
   }
 
   async openSignupLoginPage() {
@@ -15,7 +16,9 @@ export class HeaderComponent {
   async logout() {
     await this.logoutLink.click();
   }
-
+  async deleteAccount() {
+    await this.deleteAccountLink.click();
+  }
   async verifyLoggedInAs(userName) {
     await expect(this.loggedInUserLabel).toContainText(userName);
   }

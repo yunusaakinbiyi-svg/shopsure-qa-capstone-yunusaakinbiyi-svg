@@ -12,4 +12,4 @@ playwright/.cache/
 .DS_Store
 Thumbs.db
 
-# NOTE: reports/newman/ is NOT ignored on purpose - the Newman report must be committed.
+
